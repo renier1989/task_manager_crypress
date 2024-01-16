@@ -51,9 +51,7 @@ const Login = () => {
   const { msg } = alerta
   return (
     <>
-      <h1 className="text-sky-600 text-6xl font-black capitalize">
-        Inicia Sesion y Administra tus <span className="text-slate-700">{" "}proyectos</span>
-      </h1>
+      <h1 data-cy="titulo" className="text-sky-600 text-6xl font-black capitalize">Inicia Sesion y Administra tus <span className="text-slate-700">proyectos</span></h1>
       {msg && <Alerta alerta={alerta} />}
       <form onSubmit={handleSubmit} className="mt-20 bg-white rounded-lg shadow p-10">
         <div className="bg-slate-50 px-2 py-1 rounded shadow-md text-sm">
@@ -63,12 +61,12 @@ const Login = () => {
             </p>
             <div className="flex justify-between w-full">
               <div className="border-r-2 w-full">
-              <p>Email: user1@test.com</p>
-              <p>Passw: user1@test.com</p>
+                <p>Email: user1@test.com</p>
+                <p>Passw: user1@test.com</p>
               </div>
               <div className="w-full text-end">
-              <p>Email: user2@test.com</p>
-              <p>Passw: user2@test.com</p>
+                <p>Email: user2@test.com</p>
+                <p>Passw: user2@test.com</p>
               </div>
             </div>
           </code>
