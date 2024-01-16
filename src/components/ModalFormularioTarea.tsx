@@ -40,7 +40,7 @@ const ModalFormularioTarea = () => {
 
         if ([nombre, descripcion, prioridad].includes('')) {
             mostrarAlerta({
-                msg: 'Todos los campos son obligatorias',
+                msg: 'Todos los campos son obligatorios',
                 error: true
             })
             return;
@@ -120,29 +120,29 @@ const ModalFormularioTarea = () => {
 
                             <div className="sm:flex sm:items-start">
                                 <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
-                                    <Dialog.Title as="h3" className="text-2xl leading-6 font-bold text-gray-900">
+                                    <Dialog.Title data-cy="titulo-modal" as="h3" className="text-2xl leading-6 font-bold text-gray-900">
                                         { id ? 'Editar Tarea' : 'Crear Tarea'}
                                     </Dialog.Title>
 
-                                    <form onSubmit={handleSubmit} >
+                                    <form data-cy="form-tarea" onSubmit={handleSubmit} >
 
                                         {msg && <Alerta alerta={alerta} />}
                                         <div className='my-2'>
                                             <label htmlFor="nombre" className='text-lg font-bold block mt-3'>Nombre Tarea</label>
-                                            <input type="text" id="nombre" placeholder='Nombre de la Tarea' className='p-2 border-2 text-gray-600 w-full rounded-md my-2' value={nombre} onChange={e => setNombre(e.target.value)} />
+                                            <input data-cy="nombre-tarea" type="text" id="nombre" placeholder='Nombre de la Tarea' className='p-2 border-2 text-gray-600 w-full rounded-md my-2' value={nombre} onChange={e => setNombre(e.target.value)} />
                                         </div>
                                         <div className='my-2'>
                                             <label htmlFor="descripcion" className='text-lg font-bold block mt-3'>Descripción Tarea</label>
-                                            <textarea id="descripcion" placeholder='Descripción de la Tarea' className='p-2 border-2 text-gray-600 w-full rounded-md my-2' value={descripcion} onChange={e => setDescripcion(e.target.value)}
+                                            <textarea data-cy="descripcion-tarea" id="descripcion" placeholder='Descripción de la Tarea' className='p-2 border-2 text-gray-600 w-full rounded-md my-2' value={descripcion} onChange={e => setDescripcion(e.target.value)}
                                             />
                                         </div>
                                         <div className='my-2'>
                                             <label htmlFor="fecha-entrega" className='text-lg font-bold block mt-3'>Fecha de Entrega</label>
-                                            <input type="date" id="fecha-enterga" placeholder='Nombre de la Tarea' className='p-2 border-2 text-gray-600 w-full rounded-md my-2' value={fechaEntrega} onChange={e => setFechaEntrega(e.target.value)} />
+                                            <input data-cy="fecha-tarea" type="date" id="fecha-enterga" placeholder='Nombre de la Tarea' className='p-2 border-2 text-gray-600 w-full rounded-md my-2' value={fechaEntrega} onChange={e => setFechaEntrega(e.target.value)} />
                                         </div>
                                         <div className='my-2'>
                                             <label htmlFor="prioridad" className='text-lg font-bold block mt-3'>Prioridad Tarea</label>
-                                            <select id="prioridad" className='p-2 border-2 text-gray-600 w-full rounded-md my-2' value={prioridad} onChange={e => setPrioridad(e.target.value)}>
+                                            <select data-cy="prioridad-tarea" id="prioridad" className='p-2 border-2 text-gray-600 w-full rounded-md my-2' value={prioridad} onChange={e => setPrioridad(e.target.value)}>
                                                 <option value="">-- Seleccione la prioridad -- </option>
                                                 {PRIORIDAD.map(opcion => (
                                                     <option key={opcion} value={opcion}>{opcion}</option>
@@ -150,7 +150,7 @@ const ModalFormularioTarea = () => {
                                             </select>
                                         </div>
 
-                                        <input type="submit" className='p-3 rounded-md w-full font-bold cursor-pointer uppercase text-white text-center bg-sky-600 hover:shadow-lg transition-all duration-500' value={`${id ? 'Editar Tarea': 'Crear Tarea' }`} />
+                                        <input data-cy="submit-tarea" type="submit" className='p-3 rounded-md w-full font-bold cursor-pointer uppercase text-white text-center bg-sky-600 hover:shadow-lg transition-all duration-500' value={`${id ? 'Editar Tarea': 'Crear Tarea' }`} />
                                     </form>
 
                                 </div>

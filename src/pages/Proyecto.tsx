@@ -105,7 +105,7 @@ export const Proyecto = () => {
       </div>
 
       {admin && (
-        <button onClick={handleModalTarea} className="bg-sky-500 text-white px-5 py-2 uppercase rounded-md w-full md:w-auto text-sm font-bold text-center mt-5 hover:shadow-md transition-all duration-500 flex gap-2 items-center">
+        <button data-cy="button-nueva-tarea" onClick={handleModalTarea} className="bg-sky-500 text-white px-5 py-2 uppercase rounded-md w-full md:w-auto text-sm font-bold text-center mt-5 hover:shadow-md transition-all duration-500 flex gap-2 items-center">
           <PlusIcon />
           Nueva Tarea
         </button>
