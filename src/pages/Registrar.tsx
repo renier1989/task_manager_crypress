@@ -39,7 +39,7 @@ const Registrar = () => {
 
     if (password.length < 6) {
       setAlerta({
-        msg: 'El password de ser minimo de 6 caracteres',
+        msg: 'El password debe ser minimo de 6 caracteres',
         error: true
       })
       return;

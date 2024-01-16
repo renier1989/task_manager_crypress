@@ -50,6 +50,33 @@ describe('<Formularios />', ()=>{
         // verificar los enlaces para iniciar sesion y olvide password
         cy.get('[data-cy=iniciar-sesion]').should('exist').should('have.attr','href').should('eq','/');
         cy.get('[data-cy=olvide-password-registrar]').should('exist').should('have.attr','href').should('eq','/olvide-password');
+    })
+
+    it('<OlvidePassword/> - Verificar el Formulario de olvide-password ',()=>{
+        cy.visit('/olvide-password');
+
+        // verificar el titulo en la vista
+        const titulo = cy.get('[data-cy=titulo]');
+        titulo.should('exist');
+        titulo.should('have.text','Recupera tu cuenta y no pierdas tus proyectos');
+        titulo.should('have.prop', 'tagName').should('eq','H1')
+        
+        // verificar que el formulario existe
+        cy.get('[data-cy=form-olvide-password]').should('exist');
+
+        // verificar los campos del formulario
+        cy.get('[data-cy=email-input]').should('exist').should('have.prop','type').should('eq','email');
+
+        // verificar el boton de recuperacion de password
+        cy.get('[data-cy=submit-olvide-password]').should('exist').should('have.prop','type').should('eq','submit');
+        cy.get('[data-cy=submit-olvide-password]').should('have.value','Enviar Instrucciones').should('have.class','bg-sky-700 w-full');
+
+        // verificar enlaces de inicio de sesion y registrar
+        cy.get('[data-cy=link-iniciar]').should('exist').should('have.attr','href','/').should('have.text','¿Ya tienes una cuenta? Inicia Sesion');
+        cy.get('[data-cy=link-registrar').should('exist').should('have.attr','href','/registrar').should('have.text','¿No tienes cuenta? Registrarte');
+
+        // volvemos a la vista de inicio de sesion 
+        cy.visit('/');
 
     })
 }) 
