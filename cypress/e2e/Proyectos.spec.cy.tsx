@@ -62,7 +62,45 @@ describe('Dasdboras Adminsitración de Proyectos', () => {
         cy.get('[data-cy=fecha-tarea]').type('2024-01-16');
         cy.get('[data-cy=prioridad-tarea]').select('Alta');
         cy.get('[data-cy=submit-tarea]').click();
+    })
 
+    it('<Proyecto (Tarea) /> - Compeltar, Descompletar , Editar y Eliminar un tarea', () => {
+        // seleccionar la primera tarea para luego verificar si va a completar o descompletar la tarea
+        cy.get('[data-cy=tareas] div:nth-child(1) [data-cy=button-actions-tarea] [data-cy=button-completa-incompleta]').click();
+        cy.get('[data-cy=tareas] div:nth-child(1) [data-cy=button-actions-tarea] [data-cy=button-completa-incompleta]').should('have.class','bg-green-600');
+
+        cy.get('[data-cy=tareas] div:nth-child(1) [data-cy=button-actions-tarea] [data-cy=button-completa-incompleta]').click();
+        cy.get('[data-cy=tareas] div:nth-child(1) [data-cy=button-actions-tarea] [data-cy=button-completa-incompleta]').should('have.class','bg-gray-600');
+
+        // editar una tarea
+        cy.get('[data-cy=tareas] div:nth-child(1) [data-cy=button-actions-tarea] [data-cy=button-editar]').click();
+        cy.get('[data-cy=nombre-tarea]').clear().type('Task Name UPDATED');
+        cy.get('[data-cy=descripcion-tarea]').clear().type('Task Description UPDATED');
+        cy.get('[data-cy=fecha-tarea]').type('2024-01-16');
+        cy.get('[data-cy=prioridad-tarea]').select('Baja');
+        cy.get('[data-cy=submit-tarea]').click();
+
+        // eliminar tarea
+        cy.get('[data-cy=tareas] div:nth-child(1) [data-cy=button-actions-tarea] [data-cy=button-eliminar]').click();
+        // confrimar eliminar
+        cy.get('[data-cy=modal-button-eliminar-tarea]').click();
+
+        // eliminar el poryecto
+        cy.get('[data-cy=eliminar-proyecto]').click();
+
+        // cy.get('[data-cy=tareas] div:nth-child(1) [data-cy=button-actions-tarea]').then(($button)=>{
+        //     if($button.text().includes('Completa')){
+        //         cy.get('[data-cy=button-completa-incompleta]').click();
+        //         cy.get('[data-cy=button-completa-incompleta]').invoke('text').should('eq','Completa');
+        //         cy.get('[data-cy=button-completa-incompleta]').should('have.class','bg-green-600');
+                
+        //     }else if($button.text().includes('Incompleta')){
+        //         cy.get('[data-cy=button-completa-incompleta]').click();
+        //         cy.get('[data-cy=button-completa-incompleta]').invoke('text').should('eq','Incompleta');
+        //         cy.get('[data-cy=button-completa-incompleta]').should('have.class','bg-gray-600');
+        //     }
+        // })
+        
 
     })
 })

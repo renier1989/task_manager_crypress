@@ -31,10 +31,10 @@ const ProyectosProvider = ({ children }: IProyectosProvider) => {
 
     const navigate = useNavigate()
 
-    // // ESTO ES SOLO PARA ESTABLECER LA CONEXION CON SOKCET.IO LA SE EJECUTA UNA VEZ
-    // useEffect(() => {
-    //     socket = io(import.meta.env.VITE_BACKEND_URL);
-    // }, [])
+    // ESTO ES SOLO PARA ESTABLECER LA CONEXION CON SOKCET.IO LA SE EJECUTA UNA VEZ
+    useEffect(() => {
+        socket = io(import.meta.env.VITE_BACKEND_URL);
+    }, [])
 
 
     // para llamar los poryectos que el usuario logeado ha creado.

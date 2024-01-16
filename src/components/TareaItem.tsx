@@ -21,8 +21,8 @@ export const TareaItem = ({ tarea }: TareaItemProps) => {
                 <p className="mb-1 text-gray-600"> Prioridad : {prioridad} </p>
                 {estado && <p className="text-xs font-semibold bg-green-600 text-white p-1 rounded-md">Completado por: <span className="text-sm">{tarea.completado?.nombre}</span> </p>}
             </div>
-            <div className="flex gap-1 flex-col lg:flex-row mt-5 md:mt-0 w-full md:justify-end sm:w-1/4 md:flex-col">
-                <button type="button" className={`${estado ? 'bg-green-600' : 'bg-gray-600'} py-2 px-4 text-white font-bold text-sm uppercase rounded-lg hover:shadow-lg transition-shadow duration-300 `}
+            <div data-cy="button-actions-tarea" className="flex gap-1 flex-col lg:flex-row mt-5 md:mt-0 w-full md:justify-end sm:w-1/4 md:flex-col">
+                <button data-cy="button-completa-incompleta" type="button" className={`${estado ? 'bg-green-600' : 'bg-gray-600'} py-2 px-4 text-white font-bold text-sm uppercase rounded-lg hover:shadow-lg transition-shadow duration-300 `}
                     onClick={() => completarTarea(_id)}
 
                 >
@@ -30,12 +30,16 @@ export const TareaItem = ({ tarea }: TareaItemProps) => {
                 </button>
                 {admin && (
                     <>
-                        <button type="button" className="py-2 px-4 text-white font-bold bg-sky-600 text-sm uppercase rounded-lg hover:shadow-lg transition-shadow duration-300"
+                        <button 
+                        data-cy="button-editar"
+                        type="button" className="py-2 px-4 text-white font-bold bg-sky-600 text-sm uppercase rounded-lg hover:shadow-lg transition-shadow duration-300"
                             onClick={() => handleModalEtidarTarea(tarea)}
                         >
                             Editar
                         </button>
-                        <button type="button" className="py-2 px-4 text-white font-bold bg-red-600 text-sm uppercase rounded-lg hover:shadow-lg transition-shadow duration-300"
+                        <button 
+                        data-cy="button-eliminar"
+                        type="button" className="py-2 px-4 text-white font-bold bg-red-600 text-sm uppercase rounded-lg hover:shadow-lg transition-shadow duration-300"
                             onClick={() => handleModalEliminarTarea(tarea)}
                         >
                             Eliminar

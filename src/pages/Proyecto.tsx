@@ -113,7 +113,7 @@ export const Proyecto = () => {
 
       <p className="font-bold  text-xl mt-10">Tareas del Proyecto</p>
       
-      <div className="bg-white  shadow mt-10 rounded-lg">
+      <div data-cy="tareas" className="bg-white  shadow mt-10 rounded-lg">
         {proyecto.tareas?.length ?
           proyecto.tareas?.map(tarea => <TareaItem key={tarea._id} tarea={tarea} />)
           :
