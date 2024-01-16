@@ -53,7 +53,7 @@ const Login = () => {
     <>
       <h1 data-cy="titulo" className="text-sky-600 text-6xl font-black capitalize">Inicia Sesion y Administra tus <span className="text-slate-700">proyectos</span></h1>
       {msg && <Alerta alerta={alerta} />}
-      <form onSubmit={handleSubmit} className="mt-20 bg-white rounded-lg shadow p-10">
+      <form data-cy="form-login" onSubmit={handleSubmit} className="mt-20 bg-white rounded-lg shadow p-10">
         <div className="bg-slate-50 px-2 py-1 rounded shadow-md text-sm">
           <code>
             <p className="text-black font-semibold">
@@ -73,19 +73,19 @@ const Login = () => {
         </div>
         <div className="my-5">
           <label className="block uppercase text-gray-600 text-xl font-bold" htmlFor="email">Email</label>
-          <input value={email} onChange={e => setEmail(e.target.value)} id="email" autoComplete="off" type="email" placeholder="Email de usuario" className="w-full border p-3 mt-5 rounded-xl bg-gray-50" autoFocus />
+          <input data-cy="email-input" value={email} onChange={e => setEmail(e.target.value)} id="email" autoComplete="off" type="email" placeholder="Email de usuario" className="w-full border p-3 mt-5 rounded-xl bg-gray-50" autoFocus />
         </div>
         <div className="my-5">
           <label className="block uppercase text-gray-600 text-xl font-bold" htmlFor="password">Password</label>
-          <input value={password} onChange={e => setPassword(e.target.value)} id="password" type="password" placeholder="Tu password" className="w-full border p-3 mt-5 rounded-xl bg-gray-50" />
+          <input data-cy="password-input" value={password} onChange={e => setPassword(e.target.value)} id="password" type="password" placeholder="Tu password" className="w-full border p-3 mt-5 rounded-xl bg-gray-50" />
         </div>
 
-        <input type="submit" value="Iniciar Sesion" className="bg-sky-700 w-full py-3 text-white font-bold uppercase rounded hover:cursor-pointer hover:bg-sky-800 transition-colors mb-5" />
+        <input data-cy="submit-login" type="submit" value="Iniciar Sesion" className="bg-sky-700 w-full py-3 text-white font-bold uppercase rounded hover:cursor-pointer hover:bg-sky-800 transition-colors mb-5" />
       </form>
 
       <nav className="lg:flex lg:justify-between ">
-        <Link to="/registrar" className="block text-center my-5 uppercase text-slate-500 text-sm">¿No tienes cuenta? Registrarte</Link>
-        <Link to="/olvide-password" className="block text-center my-5 uppercase text-slate-500 text-sm">¿Olvidaste tu Password?</Link>
+        <Link data-cy="nueva-cuenta" to="/registrar" className="block text-center my-5 uppercase text-slate-500 text-sm">¿No tienes cuenta? Registrarte</Link>
+        <Link data-cy="olvide-cuenta" to="/olvide-password" className="block text-center my-5 uppercase text-slate-500 text-sm">¿Olvidaste tu Password?</Link>
       </nav>
     </>
 
