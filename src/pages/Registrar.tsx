@@ -6,7 +6,7 @@ import { IErrorResponse } from "../interfaces/IErrorrResponse";
 import { IAlertData } from "../interfaces/IAlertData";
 
 interface AlertaData {
-  msg:string;
+  msg: string;
   error: boolean;
 }
 const Registrar = () => {
@@ -14,7 +14,7 @@ const Registrar = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repetirPassword, setRepetirPassword] = useState('');
-  const [alerta, setAlerta] = useState<AlertaData>({msg:'', error:false});
+  const [alerta, setAlerta] = useState<AlertaData>({ msg: '', error: false });
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setAlerta({
@@ -29,15 +29,15 @@ const Registrar = () => {
       return;
     }
 
-    if(password !== repetirPassword){
+    if (password !== repetirPassword) {
       setAlerta({
         msg: 'Los passwords no coinciden',
         error: true
       })
       return;
     }
-    
-    if(password.length < 6){
+
+    if (password.length < 6) {
       setAlerta({
         msg: 'El password de ser minimo de 6 caracteres',
         error: true
@@ -46,11 +46,11 @@ const Registrar = () => {
     }
 
 
-    setAlerta({msg:'',error:false});
+    setAlerta({ msg: '', error: false });
 
     try {
-        const {data} = await AxiosClient.post(`/usuarios`,{nombre,email,password});
-        
+      const { data } = await AxiosClient.post(`/usuarios`, { nombre, email, password });
+
       setAlerta({
         msg: data.msg,
         error: false
@@ -62,11 +62,11 @@ const Registrar = () => {
       setRepetirPassword('');
     } catch (error) {
       const err = error as IErrorResponse;
-          setAlerta({ msg: err.response.data.msg, error: true });
-          setTimeout(() => {
-              setAlerta({} as IAlertData);
-          }, 3000);
-      
+      setAlerta({ msg: err.response.data.msg, error: true });
+      setTimeout(() => {
+        setAlerta({} as IAlertData);
+      }, 3000);
+
     }
 
 
@@ -76,36 +76,36 @@ const Registrar = () => {
 
   return (
     <>
-      <h1 className="text-sky-600 text-6xl font-black capitalize">
-        Crea tu cuenta y administra tus <span className="text-slate-700">{" "}proyectos</span>
+      <h1 data-cy="titulo-registrar" className="text-sky-600 text-6xl font-black capitalize">
+        Crea tu cuenta y administra tus <span className="text-slate-700">proyectos</span>
       </h1>
       {
         msg && <Alerta alerta={alerta} />
       }
-      <form onSubmit={e => handleSubmit(e)} className="mt-10 bg-white rounded-lg shadow p-10">
+      <form data-cy="form-registrar" onSubmit={e => handleSubmit(e)} className="mt-10 bg-white rounded-lg shadow p-10">
         <div className="my-5">
           <label className="block uppercase text-gray-600 text-xl font-bold" htmlFor="nombre">Nombre</label>
-          <input value={nombre} onChange={e => setNombre(e.target.value)} id="nombre" autoComplete="off" type="text" placeholder="Tu nombre completo" className="w-full border p-3 mt-5 rounded-xl bg-gray-50" autoFocus />
+          <input data-cy="nombre-input-registrar" value={nombre} onChange={e => setNombre(e.target.value)} id="nombre" autoComplete="off" type="text" placeholder="Tu nombre completo" className="w-full border p-3 mt-5 rounded-xl bg-gray-50" autoFocus />
         </div>
         <div className="my-5">
           <label className="block uppercase text-gray-600 text-xl font-bold" htmlFor="email">Email</label>
-          <input value={email} onChange={e => setEmail(e.target.value)} id="email" autoComplete="off" type="email" placeholder="Email de usuario" className="w-full border p-3 mt-5 rounded-xl bg-gray-50" />
+          <input data-cy="email-input-registrar" value={email} onChange={e => setEmail(e.target.value)} id="email" autoComplete="off" type="email" placeholder="Email de usuario" className="w-full border p-3 mt-5 rounded-xl bg-gray-50" />
         </div>
         <div className="my-5">
           <label className="block uppercase text-gray-600 text-xl font-bold" htmlFor="password">Password</label>
-          <input value={password} onChange={e => setPassword(e.target.value)} id="password" type="password" placeholder="Tu password" className="w-full border p-3 mt-5 rounded-xl bg-gray-50" />
+          <input data-cy="password-input-registrar" value={password} onChange={e => setPassword(e.target.value)} id="password" type="password" placeholder="Tu password" className="w-full border p-3 mt-5 rounded-xl bg-gray-50" />
         </div>
         <div className="my-5">
           <label className="block uppercase text-gray-600 text-xl font-bold" htmlFor="password2">Repetir Password</label>
-          <input value={repetirPassword} onChange={e => setRepetirPassword(e.target.value)} id="password2" type="password" placeholder="Repite tu password" className="w-full border p-3 mt-5 rounded-xl bg-gray-50" />
+          <input data-cy="repetir-input-registrar" value={repetirPassword} onChange={e => setRepetirPassword(e.target.value)} id="password2" type="password" placeholder="Repite tu password" className="w-full border p-3 mt-5 rounded-xl bg-gray-50" />
         </div>
 
-        <input type="submit" value="Crear Cuenta" className="bg-sky-700 w-full py-3 text-white font-bold uppercase rounded hover:cursor-pointer hover:bg-sky-800 transition-colors mb-5" />
+        <input data-cy="submit-registrar" type="submit" value="Crear Cuenta" className="bg-sky-700 w-full py-3 text-white font-bold uppercase rounded hover:cursor-pointer hover:bg-sky-800 transition-colors mb-5" />
       </form>
 
       <nav className="lg:flex lg:justify-between ">
-        <Link to="/" className="block text-center my-5 uppercase text-slate-500 text-sm">¿Ya tienes una cuenta? Inicia Sesion</Link>
-        <Link to="/olvide-password" className="block text-center my-5 uppercase text-slate-500 text-sm">¿Olvidaste tu Password? Registrarte</Link>
+        <Link data-cy="iniciar-sesion" to="/" className="block text-center my-5 uppercase text-slate-500 text-sm">¿Ya tienes una cuenta? Inicia Sesion</Link>
+        <Link data-cy="olvide-password-registrar" to="/olvide-password" className="block text-center my-5 uppercase text-slate-500 text-sm">¿Olvidaste tu Password? Registrarte</Link>
       </nav>
     </>
   )
