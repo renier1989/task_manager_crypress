@@ -27,7 +27,7 @@ function Proyectos() {
 
   return (
     <>
-      <h1 className="text-4xl  font-black">Proyectos</h1>
+      <h1 data-cy="titulo-dashborad" className="text-4xl  font-black">Proyectos</h1>
       {alerta.msg && <Alerta alerta={alerta} />}
       <div className="bg-white shadow mt-10 rounded-lg">
         {proyectos.length ?

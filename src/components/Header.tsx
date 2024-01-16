@@ -30,7 +30,7 @@ export const Header = () => {
                         to="/proyectos"
                         className="font-bold uppercase "
                     >Proyectos</Link>
-                    <button type="button" className="text-sm text-white bg-sky-600 rounded-md font-bold p-2"
+                    <button data-cy="button-cerrar-sesion" type="button" className="text-sm text-white bg-sky-600 rounded-md font-bold p-2"
                     onClick={handleCerrarSesion}
                     >Cerrar Sesion</button>
                 </div>
